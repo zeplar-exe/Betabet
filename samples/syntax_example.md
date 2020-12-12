@@ -1,7 +1,7 @@
 list:
-## if no datatype is provided, any type can be inserted into the list
 
 list(datatype, size = n) myList = [object1, object2]
+## if no datatype is provided, any type can be inserted into the list
 list.cut(start, end) ## cuts everything before start, and after end
 
 list(int, size = 8) nums = [1, 2, 10, 15, 100, 200, 900, 3090]
@@ -9,25 +9,30 @@ nums.cut(3, 5) ## nums now only contains 15, 100, and 200
 
 function:
 
-## No datatype represents no return
-
 datatype foo : arg1, arg2 {
 	## content
 }
 
-int add : a, b {
+## No datatype represents no return
+
+int add : int: a, int: b {
 	return (a + b)
 }
 
-process:
+## 'int:' requires bar to be a integer, if the datatype is left out, there is no required datatype. Non datatypes with a colon will be treated as defining a default argument, for example 'ham: "Ham Sandwich"'. 'string: ham: "Ham Sandwich"' achieves the same result
 
-foo : bar, varadic = {...} {
-	bar(tuple(varadic))
+process:
+## processes are the same as functions but run anonymously (no references)
+
+foo : function: bar, varadic = ... {
+	bar(varadic)
 }
-## runs bar, a function, with the given parameters (varadic)
+
+## runs bar, a function, with the given parameters (... returns any passed arguments that are not referenced in the funcion)
+## 'argument = value' can be used on preexisting values, such as '...', these cannot be overwritten, nor will they occupy passed arguments
 
 int n = 5
 process proc = process(arg1, arg2) { return str(arg1) + str(arg2) }
 
 foo(proc, n, 5)
-## process allows functions to be used as parameters without being predefined.
+## processes are functions to be used as parameters without being predefined.

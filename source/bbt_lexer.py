@@ -7,7 +7,6 @@ tokens = [
 'MULTIPLY',     # *
 'DIVIDE',       # /
 'MODULO',       # %
-'COLON',        # :
 
 'NOT',          # !
 'EQUALS',       # =
@@ -45,7 +44,6 @@ t_MINUS   = r'\-'
 t_MULTIPLY   = r'\*'
 t_DIVIDE  = r'\/'
 t_MODULO = r'\%'
-t_COLON = r'\:'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LBRACE = r'\['
