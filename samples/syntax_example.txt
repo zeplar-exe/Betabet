@@ -1,3 +1,5 @@
+## is a comment
+
 list:
 
 list(datatype, size = n) myList = [object1, object2]
