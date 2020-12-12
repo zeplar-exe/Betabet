@@ -21,7 +21,7 @@ int add : int: a, int: b {
 	return (a + b)
 }
 
-## 'int:' requires bar to be a integer, if the datatype is left out, there is no required datatype. Non datatypes with a colon will be treated as defining a default argument, for example 'ham: "Ham Sandwich"'. 'string: ham: "Ham Sandwich"' achieves the same result
+## 'int:' requires a and b to be a integer, if the datatype is left out, there is no required datatype. Non datatypes with a colon will be treated as defining a default argument, for example 'ham: "Ham Sandwich"'. 'string: ham: "Ham Sandwich"' achieves the same result
 
 process:
 ## processes are the same as functions but run anonymously (no references)
