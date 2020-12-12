@@ -31,9 +31,11 @@ tokens = [
                                                     # DATA TYPES#
 
 'INTEGER',      # int
-'FLOAT',       # dbl
+'FLOAT',       # flt
 'STRING',       # str
+'DOUBLE',       # dbl
 'FUNCTION',       # func
+'PROCESS',         # proc
 
 'COMMENT',  ## --
 
@@ -91,11 +93,20 @@ def t_error(t):
     t.lexer.skip(1)
 
 reserved = {
+    # Keywords
     'if' : 'IF',
     'else' : 'ELSE',
     'while' : 'WHILE',
     'when' : 'WHEN',
-    'is' : 'IS'
+    'is' : 'IS',
+    'use' : 'USE',
+
+    # Datatypes
+    'int' : "INT",
+    'char' : "CHAR",
+    'string' : "STRING",
+    'double' : "DOUBLE",
+    'float' : "FLOAT",
 }
 
 lexer = lex.lex()
