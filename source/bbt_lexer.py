@@ -98,7 +98,7 @@ def t_error(t):
     print("Unexpected character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-reserved = {
+reserved_keys = {
     # Keywords
     'if' : 'IF',
     'else' : 'ELSE',
@@ -114,6 +114,9 @@ reserved = {
     'double' : "DOUBLE",
     'float' : "FLOAT",
 }
+
+tokens.append('ID')
+tokens += list(reserved_keys)
 
 lexer = lex.lex()
 
