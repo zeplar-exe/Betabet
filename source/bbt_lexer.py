@@ -69,6 +69,7 @@ t_AND = r'\&'
 t_OR = r'\|'
 
 # Datatypes
+t_FUNCTION = r'.* \: .*'
 t_COMMENT = r'\#\#.*'      
 t_MULTILINE_COMMENT_START = r'\#\_ (.|\n)*'
 t_MULTILINE_COMMENT_END = r'\_\#'
@@ -88,9 +89,6 @@ def t_STRING(t):
     r'\d+'
     t.value = str(t.value)
     return t
-
-def t_FUNCTION(t):
-    r'\d()'
 
 def t_newline(t):
     r'\n+'
@@ -124,12 +122,14 @@ data = '''
 {(300-250)<(400-500)}
 20 & 30 | 50
 ## This is a single-line comment
+int pizza : a, b {1 + 2}
 #_ This is a multi-line comment 
 boi 
 im so smart lol
 hehe
 dumb
 _#
+5 + 90
 '''
 
 # Give the lexer some input
