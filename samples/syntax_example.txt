@@ -32,9 +32,3 @@ foo : function: bar, varadic = ... {
 
 ## runs bar, a function, with the given parameters (... returns any passed arguments that are not referenced in the funcion)
 ## 'argument = value' can be used on preexisting values, such as '...', these cannot be overwritten, nor will they occupy passed arguments
-
-int n = 5
-process proc = process(arg1, arg2) { return str(arg1) + str(arg2) }
-
-foo(proc, n, 5)
-## processes are functions to be used as parameters without being predefined.

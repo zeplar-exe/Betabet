@@ -35,7 +35,6 @@ tokens = [
 'STRING',       # str
 'DOUBLE',       # dbl
 'FUNCTION',       # func
-'PROCESS',         # proc
 
 'COMMENT',  # ##
 'MULTILINE_COMMENT_START',   # #*
@@ -92,9 +91,6 @@ def t_STRING(t):
     return t
 
 def t_FUNCTION(t):
-    r'\d()'
-
-def t_PROCESS(t):
     r'\d()'
 
 def t_newline(t):
