@@ -69,9 +69,8 @@ t_AND = r'\&'
 t_OR = r'\|'
 
 # Datatypes
-t_FUNCTION = r'.* \: .*'
 t_COMMENT = r'\#\#.*'      
-t_MULTILINE_COMMENT_START = r'\#\_ (.|\n)*'
+t_MULTILINE_COMMENT_START = r'\#\_ [^\_\#]*'
 t_MULTILINE_COMMENT_END = r'\_\#'
 t_ignore  = ' \t'
 
@@ -86,7 +85,7 @@ def t_FLOAT(t):
     return t  
 
 def t_STRING(t):
-    r'\d+'
+    r'"([^"\n]|(\\"))*"$'
     t.value = str(t.value)
     return t
 
@@ -98,7 +97,7 @@ def t_error(t):
     print("Unexpected character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-reserved = {
+reserved_keys = {
     # Keywords
     'if' : 'IF',
     'else' : 'ELSE',
@@ -121,15 +120,15 @@ data = '''
 [25/(3*40) + {300-20} -16.5]
 {(300-250)<(400-500)}
 20 & 30 | 50
+5 + 90
 ## This is a single-line comment
-int pizza : a, b {1 + 2}
 #_ This is a multi-line comment 
 boi 
 im so smart lol
 hehe
 dumb
 _#
-5 + 90
+"This is a double-quote string"
 '''
 
 # Give the lexer some input
