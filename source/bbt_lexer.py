@@ -38,6 +38,8 @@ tokens = [
 'PROCESS',         # proc
 
 'COMMENT',  # ##
+'MULTILINE_COMMENT_START',   # #*
+'MULTILINE_COMMENT_END',   # *#
 
 ]
 
@@ -62,7 +64,9 @@ t_DOUBLEEQUAL = r'\=\='
 t_NE = r'\!\='
 t_AND = r'\&'
 t_OR = r'\|'
-t_COMMENT = r'\#\#.*'            
+t_COMMENT = r'\#\#.*'      
+t_MULTILINE_COMMENT_START = r'\#\_ (.|\n)*'
+t_MULTILINE_COMMENT_END = r'\_\#'
 t_ignore  = ' \t'
 
 def t_INTEGER(t):
@@ -83,7 +87,6 @@ def t_STRING(t):
 def t_FUNCTION(t):
     r'\d()'
 
-# Define a rule so we can track line numbers
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
@@ -116,6 +119,12 @@ data = '''
 {(300-250)<(400-500)}
 20 & 30 | 50
 ## This is a single-line comment
+#_ This is a multi-line comment 
+boi 
+im so smart lol
+hehe
+dumb
+_#
 '''
 
 # Give the lexer some input
