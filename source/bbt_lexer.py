@@ -37,8 +37,8 @@ tokens = [
 'FUNCTION',       # func
 
 'COMMENT',  # ##
-'MULTILINE_COMMENT_START',   # #*
-'MULTILINE_COMMENT_END',   # *#
+'MULTILINE_COMMENT_START',   # #_
+'MULTILINE_COMMENT_END',   # _#
 
 ]
 
