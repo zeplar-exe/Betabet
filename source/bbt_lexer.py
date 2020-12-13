@@ -43,19 +43,24 @@ tokens = [
 
 ]
 
+# Operators
 t_PLUS    = r'\+'
 t_MINUS   = r'\-'
 t_MULTIPLY   = r'\*'
 t_DIVIDE  = r'\/'
 t_MODULO = r'\%'
+t_NOT = r'\!'
+t_EQUALS = r'\='
+
+# Brackets
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LBRACE = r'\['
 t_RBRACE = r'\]'
 t_BLOCKSTART = r'\{'
 t_BLOCKEND = r'\}'
-t_NOT = r'\!'
-t_EQUALS = r'\='
+
+# Comparators
 t_GT = r'\>'
 t_LT = r'\<'
 t_LTE = r'\<\='
@@ -64,6 +69,8 @@ t_DOUBLEEQUAL = r'\=\='
 t_NE = r'\!\='
 t_AND = r'\&'
 t_OR = r'\|'
+
+# Datatypes
 t_COMMENT = r'\#\#.*'      
 t_MULTILINE_COMMENT_START = r'\#\_ (.|\n)*'
 t_MULTILINE_COMMENT_END = r'\_\#'
@@ -85,6 +92,9 @@ def t_STRING(t):
     return t
 
 def t_FUNCTION(t):
+    r'\d()'
+
+def t_PROCESS(t):
     r'\d()'
 
 def t_newline(t):
