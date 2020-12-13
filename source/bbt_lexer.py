@@ -114,6 +114,9 @@ reserved_keys = {
     'float' : "FLOAT",
 }
 
+tokens.append('ID')
+tokens += list(reserved_keys)
+
 lexer = lex.lex()
 
 data = '''
