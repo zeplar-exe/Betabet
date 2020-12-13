@@ -33,7 +33,6 @@ tokens = [
 'INTEGER',      # int
 'FLOAT',       # flt
 'STRING',       # str
-'DOUBLE',       # dbl
 'FUNCTION',       # func
 
 'COMMENT',  # ##
