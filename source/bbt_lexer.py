@@ -31,13 +31,34 @@ tokens = [
                                                     # DATA TYPES#
 
 'INTEGER',      # int
+'int',
 'FLOAT',       # flt
-'STRING',       # str
+'float',
+'double',
+'NORM_STRING',       # nstr
+'CHAR_STRING',       # cstr
+'string',   
 'FUNCTION',       # func
+'BOOLEAN',         # bool
+'bool',
+'boolean',
 
 'COMMENT',  # ##
 'MULTILINE_COMMENT_START',   # #_
 'MULTILINE_COMMENT_END',   # _#
+
+# Keywords
+'IF',     # if
+'ELSE',     # else
+'WHILE',     # while
+'WHEN',     # when
+'IS',     # is
+'USE',     # use
+
+# Misc
+'ARGUMENT',     # arg
+'COLON',       # :
+'COMMA',       # ,
 
 ]
 
@@ -69,10 +90,33 @@ t_AND = r'\&'
 t_OR = r'\|'
 
 # Datatypes
+t_int = r'int'
+t_float = r'float'
+t_double = r'double'
+t_string = r'string'
+t_bool = r'bool'
+t_boolean = r'boolean'
+
 t_COMMENT = r'\#\#.*'      
 t_MULTILINE_COMMENT_START = r'\#\_ [^\_\#]*'
 t_MULTILINE_COMMENT_END = r'\_\#'
 t_ignore  = ' \t'
+
+# Keywords
+t_IF = r'if'
+t_ELSE = r'else'
+t_WHILE = r'while'
+t_WHEN = r'when'
+t_IS = r'is'
+t_USE = r'use'
+
+# Misc
+t_COLON = r':'
+t_COMMA = r','
+
+def t_FUNCTION(foo):
+    r'^[^:]+'
+    return foo
 
 def t_INTEGER(t):
     r'\d+'
@@ -84,10 +128,25 @@ def t_FLOAT(t):
     t.value = float(t.value)
     return t  
 
-def t_STRING(t):
-    r'"([^"\n]|(\\"))*"$'
-    t.value = str(t.value)
+def t_BOOLEAN(t):
+    r'(true)|(false)'
+    
+    if t.value == "true":
+        t.value = True
+    elif t.value == "false":
+        t.value = False
+
     return t
+
+def t_NORM_STRING(string):
+    r'"([^"\n]|(\\"))*"'
+    string.value = str(string.value)
+    return string
+
+def t_CHAR_STRING(string):
+    r"'([^'\n]|(\\'))*'"
+    string.value = str(string.value)
+    return string
 
 def t_newline(t):
     r'\n+'
@@ -97,42 +156,13 @@ def t_error(t):
     print("Unexpected character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-reserved_keys = {
-    # Keywords
-    'if' : 'IF',
-    'else' : 'ELSE',
-    'while' : 'WHILE',
-    'when' : 'WHEN',
-    'is' : 'IS',
-    'use' : 'USE',
-
-    # Datatypes
-    'int' : "INT",
-    'char' : "CHAR",
-    'string' : "STRING",
-    'double' : "DOUBLE",
-    'float' : "FLOAT",
-}
-
 lexer = lex.lex()
 
-data = '''
-[25/(3*40) + {300-20} -16.5]
-{(300-250)<(400-500)}
-20 & 30 | 50
-5 + 90
-## This is a single-line comment
-#_ This is a multi-line comment 
-boi 
-im so smart lol
-hehe
-dumb
-_#
-"This is a double-quote string"
+script = '''
+
 '''
 
-# Give the lexer some input
-lexer.input(data)
+lexer.input(script)
 
 # Tokenize
 for token in lexer:
