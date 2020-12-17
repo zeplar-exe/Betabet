@@ -56,6 +56,7 @@ tokens = [
 'USE',     # use
 
 # Misc
+'VARIABLE',     # var
 'ARGUMENT',     # arg
 'COLON',       # :
 'COMMA',       # ,
@@ -115,7 +116,7 @@ t_COLON = r':'
 t_COMMA = r','
 
 def t_FUNCTION(foo):
-    r'^[^:]+'
+    r'^(.*)[^:]+'
     return foo
 
 def t_INTEGER(t):
@@ -159,7 +160,7 @@ def t_error(t):
 lexer = lex.lex()
 
 script = '''
-
+int people : 1, "string" {}
 '''
 
 lexer.input(script)
