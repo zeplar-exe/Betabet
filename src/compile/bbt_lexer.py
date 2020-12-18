@@ -166,7 +166,6 @@ lexer = lex.lex()
 script = '''
 bool x = true
 autoVariable = 2
-int people : 1, "string" {}
 '''
 
 lexer.input(script)
