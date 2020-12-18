@@ -116,7 +116,11 @@ t_COLON = r':'
 t_COMMA = r','
 
 def t_FUNCTION(foo):
-    r'^(.*)[^:]+'
+    r'(\w+)(?=\s+:)'
+    return foo
+    
+def t_VARIABLE(foo):
+    r'(\w+)(?=\s+=)'
     return foo
 
 def t_INTEGER(t):
@@ -160,6 +164,8 @@ def t_error(t):
 lexer = lex.lex()
 
 script = '''
+bool x = true
+autoVariable = 2
 int people : 1, "string" {}
 '''
 
