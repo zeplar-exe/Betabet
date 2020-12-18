@@ -1,7 +1,7 @@
 import ply.lex as lex
 
 tokens = [
-                                                     # OPERATORS #
+                                                     # OPERATORS 
 'PLUS' ,        # +
 'MINUS' ,       # -
 'MULTIPLY',     # *
@@ -11,7 +11,7 @@ tokens = [
 'NOT',          # !
 'EQUALS',       # =
 
-                                                     # COMPARATORS #
+                                                     # COMPARATORS 
 'LT',           # <
 'GT',           # >
 'LTE',          # <=
@@ -20,7 +20,7 @@ tokens = [
 'NE',           # !=
 'AND',          # &
 'OR' ,          # |                                                
-                                                      # BRACKETS #
+                                                      # BRACKETS 
 
 'LPAREN',       # (
 'RPAREN',       # )
@@ -28,7 +28,7 @@ tokens = [
 'RBRACE',       # ]
 'BLOCKSTART',   # {
 'BLOCKEND',     # }
-                                                    # DATA TYPES#
+                                                    # DATA TYPES
 
 'INTEGER',      # int
 'int',
@@ -47,7 +47,7 @@ tokens = [
 'MULTILINE_COMMENT_START',   # #_
 'MULTILINE_COMMENT_END',   # _#
 
-# Keywords
+                                                    # Keywords
 'IF',     # if
 'ELSE',     # else
 'WHILE',     # while
@@ -55,7 +55,7 @@ tokens = [
 'IS',     # is
 'USE',     # use
 
-# Misc
+                                                    # Misc
 'VARIABLE',     # var
 'ARGUMENT',     # arg
 'COLON',       # :
@@ -118,7 +118,7 @@ t_COMMA = r','
 def t_FUNCTION(foo):
     r'(\w+)(?=\s+:)'
     return foo
-    
+
 def t_VARIABLE(foo):
     r'(\w+)(?=\s+=)'
     return foo
