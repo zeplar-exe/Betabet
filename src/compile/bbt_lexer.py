@@ -56,7 +56,7 @@ tokens = [
 'USE',     # use
 
                                                     # Misc
-'VARIABLE',     # var
+'KEY',     # var
 'ARGUMENT',     # arg
 'COLON',       # :
 'COMMA',       # ,
@@ -119,7 +119,7 @@ def t_FUNCTION(foo):
     r'(\w+)(?=\s+:)'
     return foo
 
-def t_VARIABLE(foo):
+def t_KEY(foo):
     r'(\w+)(?=\s+=)'
     return foo
 
